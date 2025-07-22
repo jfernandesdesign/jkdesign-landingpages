@@ -6,6 +6,7 @@ body {
   color: #222;
 }
 header {
+  position: relative; /* necessário para posicionar o pseudo-elemento */
   background: url('images/exemplo-bg.png') center/cover no-repeat;
   height: 100vh;
   display: flex;
@@ -15,7 +16,24 @@ header {
   color: rgb(1, 88, 34);
   text-align: center;
   padding: 2rem;
-  animation: fadeIn 1.2s ease-out;
+  overflow: hidden; /* garante que o blur não cause scroll */
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: inherit; /* herda a mesma imagem */
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px); /* ajusta o nível de desfoque */
+  z-index: 0; /* fica atrás do conteúdo */
+}
+
+/* O conteúdo do header deve ficar acima */
+header > * {
+  position: relative;
+  z-index: 1;
 }
 .logo {
   margin-bottom: 2rem;
