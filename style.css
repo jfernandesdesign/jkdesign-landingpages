@@ -13,7 +13,7 @@ header {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: rgb(1, 88, 34);
+  color: rgb(254, 255, 255);
   text-align: center;
   padding: 2rem;
   overflow: hidden; /* garante que o blur não cause scroll */
