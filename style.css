@@ -47,14 +47,6 @@ header h1 {
   font-weight: 700;
   color: rgb(1, 88, 34);
 }
-
-header h2 {
-  font-size: 1.8rem; /* menor que o h1 */
-  margin: 0 0 1.5rem 0;
-  font-weight: 500;
-  color: rgb(10, 120, 40); /* tom verde mais suave, opcional */
-}
-}
 header a {
   background-color: #00a859;
   padding: 1rem 2rem;
