@@ -94,8 +94,8 @@ section {
   transform: scale(1.1);
 }
 .swiper-slide img {
-  width: 100%;
-  border-radius: 16px;
+  width: 50%;
+  border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
