@@ -81,22 +81,17 @@ section {
   align-items: center;
 }
 .swiper-slide {
-  width: 200px;
+  width: 150px;
   transition: all 0.4s ease;
   filter: blur(2px);
   opacity: 0.5;
   transform: scale(0.9);
 }
 .swiper-slide-active {
-  width: 280px;
+  width: 220px;
   filter: none;
   opacity: 1;
-  transform: scale(1.1);
-}
-.swiper-slide img {
-  width: 50%;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transform: scale(1.05);
 }
 
 .swiper-slide img {
