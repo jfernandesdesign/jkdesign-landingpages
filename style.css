@@ -152,18 +152,7 @@ footer {
   text-decoration: none;
   color: #ff5f00;
 }
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 1.8rem;
-  }
-  .logo img {
-    max-width: 120px;
-  }
-  form {
-    padding: 1rem;
-  }
-  .swiper {
-    padding: 1rem 0;
+
     /* Responsivo para telas menores */
 @media (max-width: 768px) {
   .swiper-slide {
