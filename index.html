@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,13 +10,13 @@
 </head>
 <body>
   <header>
-  <div class="logo">
-    <img src="images/logo-jkdesign.png" alt="Logotipo JK Design">
-  </div>
-  <h1>SUA MARCA ESTAMPADA</h1>
-  <h2>COM QUALIDADE E ESTILO</h2>
-  <a href="https://wa.me/5563999216263" target="_blank">Solicitar Orçamento</a>
-</header>
+    <div class="logo">
+      <img src="images/logo-jkdesign.png" alt="Logotipo JK Design">
+    </div>
+    <h1>SUA MARCA ESTAMPADA</h1>
+    <h2>COM QUALIDADE E ESTILO</h2>
+    <a href="https://wa.me/5563999216263" target="_blank">Solicitar Orçamento</a>
+  </header>
 
   <section>
     <h2>Sobre Nós</h2>
@@ -24,10 +25,49 @@
 
   <section class="portfolio">
     <h2>Portfólio</h2>
-    <div class="gallery">
-      <img src="images/exemplo1.png" alt="Camiseta de pesca estilosa">
-      <img src="images/exemplo2.png" alt="Camiseta de pesca 1">
-      <img src="images/exemplo3.png" alt="Camiseta de pesca 2">
+
+    <div class="carousel-block">
+      <h3>Camisas básicas</h3>
+      <div class="carousel">
+        <img src="images/camisa_basica1.png" alt="Camisa básica 1">
+        <img src="images/camisa_basica2.png" alt="Camisa básica 2">
+        <img src="images/camisa_basica3.png" alt="Camisa básica 3">
+        <img src="images/camisa_basica4.png" alt="Camisa básica 4">
+        <img src="images/camisa_basica5.png" alt="Camisa básica 5">
+      </div>
+    </div>
+
+    <div class="carousel-block">
+      <h3>Camisas para empresa</h3>
+      <div class="carousel">
+        <img src="images/camisa_empresa1.png" alt="Camisa empresa 1">
+        <img src="images/camisa_empresa2.png" alt="Camisa empresa 2">
+        <img src="images/camisa_empresa3.png" alt="Camisa empresa 3">
+        <img src="images/camisa_empresa4.png" alt="Camisa empresa 4">
+        <img src="images/camisa_empresa5.png" alt="Camisa empresa 5">
+      </div>
+    </div>
+
+    <div class="carousel-block">
+      <h3>Camisas agros</h3>
+      <div class="carousel">
+        <img src="images/camisa_agro1.png" alt="Camisa agro 1">
+        <img src="images/camisa_agro2.png" alt="Camisa agro 2">
+        <img src="images/camisa_agro3.png" alt="Camisa agro 3">
+        <img src="images/camisa_agro4.png" alt="Camisa agro 4">
+        <img src="images/camisa_agro5.png" alt="Camisa agro 5">
+      </div>
+    </div>
+
+    <div class="carousel-block">
+      <h3>Acessórios</h3>
+      <div class="carousel">
+        <img src="images/acessorio1.png" alt="Acessório 1">
+        <img src="images/acessorio2.png" alt="Acessório 2">
+        <img src="images/acessorio3.png" alt="Acessório 3">
+        <img src="images/acessorio4.png" alt="Acessório 4">
+        <img src="images/acessorio5.png" alt="Acessório 5">
+      </div>
     </div>
   </section>
 
@@ -43,10 +83,20 @@
 
   <section>
     <h2>Solicite um Orçamento</h2>
-    <form action="https://formsubmit.co/suporte.jkdesign@gmail.com" method="POST">
+    <form id="orcamentoForm" action="https://formsubmit.co/suporte.jkdesign@gmail.com" method="POST">
       <input type="text" name="nome" placeholder="Seu nome" required>
       <input type="tel" name="whatsapp" placeholder="WhatsApp para contato" required>
-      <input type="text" name="quantidade" placeholder="Quantidade desejada" required>
+      <input type="number" id="quantidade" name="quantidade" placeholder="Quantidade desejada" required min="1">
+      
+      <label for="personalizar">Deseja personalizar com nome?</label>
+      <select id="personalizar" name="personalizar" required>
+        <option value="">Selecione</option>
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+      </select>
+
+      <div id="listaClientes"></div>
+
       <textarea name="tipo" placeholder="Tipo de estampa (frente, costas, total, etc)" rows="4" required></textarea>
       <button type="submit">Enviar</button>
     </form>
@@ -64,5 +114,33 @@
     JK Design Estamparia Digital – Todos os direitos reservados. <br>
     Feito com 💙 para destacar sua marca.
   </footer>
+
+  <script>
+    const quantidadeInput = document.getElementById("quantidade");
+    const personalizarSelect = document.getElementById("personalizar");
+    const listaClientes = document.getElementById("listaClientes");
+
+    function gerarLista() {
+      const quantidade = parseInt(quantidadeInput.value);
+      const personalizar = personalizarSelect.value;
+      listaClientes.innerHTML = "";
+
+      if (!isNaN(quantidade) && quantidade > 0) {
+        for (let i = 1; i <= quantidade; i++) {
+          const div = document.createElement("div");
+          div.innerHTML = `
+            <h4>Item ${i}</h4>
+            ${personalizar === "Sim" ? `<input type="text" name="cliente_nome_${i}" placeholder="Nome para personalizar">` : ""}
+            <input type="text" name="cliente_tamanho_${i}" placeholder="Tamanho (P, M, G, GG, etc)">
+            <input type="hidden" name="cliente_personalizado_${i}" value="${personalizar}">
+          `;
+          listaClientes.appendChild(div);
+        }
+      }
+    }
+
+    quantidadeInput.addEventListener("change", gerarLista);
+    personalizarSelect.addEventListener("change", gerarLista);
+  </script>
 </body>
 </html>
