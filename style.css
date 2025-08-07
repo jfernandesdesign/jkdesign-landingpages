@@ -169,6 +169,15 @@ footer {
   }
   .swiper {
     padding: 1rem 0;
+    /* Responsivo para telas menores */
+@media (max-width: 768px) {
+  .swiper-slide {
+    width: 120px;
+  }
+  .swiper-slide-active {
+    width: 180px;
+  }
+}
   }
   .swiper-slide {
     width: 250px;
